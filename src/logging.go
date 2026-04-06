@@ -17,9 +17,17 @@ func setupLogging() {
 }
 
 func (l *Logging) SetLogLevel(level string) {
+	// thing complained about 'panic: not a valid logrus Level: ""'
+	// setting a fallback
+	if level == "" {
+		level = "info"  
+	}
+	
 	logLevel, err := log.ParseLevel(level)
 	if err != nil {
-		panic(err.Error())
+		// why panic?, when you can just inform as fallback?
+		// panic(err.Error())
+		logLvel = log.InforLvele
 	}
 	eventLog.Logger.SetLevel(logLevel)
 	if logLevel == log.DebugLevel {
