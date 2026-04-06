@@ -1,9 +1,4 @@
 ## Feedback Agent
-
-The loadbalancer.org feedback agent is used to dynamically set real service weight depending on it's available system resources in <a href="http://www.haproxy.org/">HAProxy<a/>.
-  
-For an in-depth look into how our feedback agent works please refer to this blog post: <a href="http://www.loadbalancer.org/blog/open-source-windows-service-for-reporting-server-load-back-to-haproxy-load-balancer-feedback-agent/">Open Source Windows service for reporting server load back to HAProxy (load balancer feedback agent).</a>
-  
 ## Features
 
 - CPU metric
@@ -17,16 +12,14 @@ For an in-depth look into how our feedback agent works please refer to this blog
 * Go v1.9 or later
 * Windows
 
-## Build
-Please follow these instructions to build the feedback agent:
+## Build (powershell) 
 
 ```
-go get -d
+$env:GOOS="windows"
+$env:GOARCH="amd64"
+go build -ldflags "-X main.Version=$env:VERSION -X main.Build=$env:BUILD" -v -o ./bin/windows64/LBCPUMon.exe ./src
 ```
-
-```
-go build
-```
+ 
 ## XML
 
 ```
@@ -55,10 +48,5 @@ go build
   <LogLevel value="INFO" />
 </xml>
 ```
-
-## Support
-If you require assistance with our feedback agent please contact us at support@loadbalancer.org
-
-## License
-GNU General Public License, version 2
+ 
 
