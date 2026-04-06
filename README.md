@@ -48,5 +48,10 @@ go build -ldflags "-X main.Version=$env:VERSION -X main.Build=$env:BUILD" -v -o 
   <LogLevel value="INFO" />
 </xml>
 ```
+
+## Install
+```
+sc create FeedBackService binPath= "full\path\to\LBCPUMon.exe"
+```
  
 
