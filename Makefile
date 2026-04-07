@@ -6,6 +6,8 @@ LDFLAGS=-ldflags "-X main.Version=${VERSION} -X main.Build=${BUILD}"
 
 default: build
 
+all: windows linux
+
 build: windows
 windows:
 	 env GOOS=windows GOARCH=amd64 go build ${LDFLAGS} -v -o ./bin/windows64/LBCPUMon.exe ./src
@@ -15,3 +17,4 @@ get:
 	go mod download
 clean:
 	go clean -modcache
+	rm -rf bin/*
