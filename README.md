@@ -21,7 +21,7 @@ go build -ldflags "-X main.Version=$env:VERSION -X main.Build=$env:BUILD" -v -o 
 ```
  
 ## XML
-
+Place under ProgramData/Loadbalancer.org/Loadbalancer/
 ```
 <xml>
   <Cpu>
